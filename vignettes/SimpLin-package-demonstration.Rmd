@@ -1,0 +1,57 @@
+---
+title: "`SimpLin` package demonstration"
+author: "Liz Lawler"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{SimpLin-package-demonstration}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+With this package, you can perform a simple linear regression analysis. This package provides one function, `SimpLinR` which takes two arguments:
+- `x`: a numeric vector of length $n$, the predictor variable
+- `y`: a numeric vector of length $n$, the response variable
+
+The function automatically adds a column of ones to the `x` vector to create a design matrix $\bf{X}_{n, 2}$. The function finds the least squares estimate (LSE) of your coefficients through the following matrix multiplication: 
+$$(\bf{X}^T\bf{X})^{-1}\bf{X}^T\bf{y}$$
+The function also calculates the standard errors of the parameter coefficients following similar linear model theory, along with calculating the residuals and predicted values. Below is a brief example with corresponding output.
+
+```{r setup}
+library(SimpLin)
+
+x <- c(1,5,6)
+y <- c(1,2,3)
+fit <- SimpLinR(x, y)
+```
+
+Estimated coefficients, with intercept always first
+```{r}
+fit$coefs
+```
+
+Standard errors of both coefficients
+```{r}
+fit$std_errors
+```
+
+95% confidence interval for both coefficients; 2.5% is the first column and 97.5% is the second column
+```{r}
+fit$conf_int
+```
+
+Predicted values
+```{r}
+fit$preds
+```
+
+And finally, the residuals
+```{r}
+fit$resids
+```

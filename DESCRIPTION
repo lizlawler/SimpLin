@@ -1,0 +1,16 @@
+Package: SimpLin
+Type: Package
+Title: Simple Linear Regression - Stat 600
+Version: 1.0
+Date: 2024-02-01
+Author: Liz Lawler
+Maintainer: Liz Lawler <liz.lawler@colostate.edu>
+Description: This package was created as part of an assignment for the Statistical Computing course at Colorado State University. The package performs a simple linear regression analysis, with vector input for both the predictor and response variables.
+License: MIT License
+Imports: Rcpp (>= 1.0.12)
+LinkingTo: Rcpp, RcppArmadillo
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
+RoxygenNote: 7.3.1
